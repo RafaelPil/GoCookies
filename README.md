@@ -39,6 +39,21 @@ Clone the repository:
 git clone https://github.com/RafaelPil/GoCookies
 ```
 
+1. Create Telegram ChatBot(BotFather).
+2.Get Telegram ChatID:
+
+Get The Telegram ChatID:
+```bash
+https://api.telegram.org/bot<YourBotToken>/getUpdates
+```
+
+3. Set "botToken" and chatID in ./main.go file:
+
+```bash
+botToken = ""
+chatID   = ""
+```
+
 ## Usage
 
 ```bash
