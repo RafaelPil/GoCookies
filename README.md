@@ -64,7 +64,7 @@ Contributions to this project are welcome! Feel free to open issues, submit pull
 
 If you find the project useful, consider supporting its development by leaving a star ⭐. Your encouragement helps!
 
-<a href='https://cdn.buymeacoffee.com/uploads/project_updates/2023/12/08f1cf468ace518fc8cc9e352a2e613f.png' width=150></a>
+<a href='https://cdn.buymeacoffee.com/uploads/project_updates/2023/12/08f1cf468ace518fc8cc9e352a2e613f.png' width=800></a>
 
 ## Disclaimer
 
