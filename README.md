@@ -39,8 +39,8 @@ Clone the repository:
 git clone https://github.com/RafaelPil/GoCookies
 ```
 
-1. Create Telegram ChatBot(BotFather).
-2.Get Telegram ChatID:
+- Create Telegram ChatBot(BotFather).
+- Get Telegram ChatID:
 
 Get The Telegram ChatID:
 ```bash
