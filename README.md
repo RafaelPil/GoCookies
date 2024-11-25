@@ -39,14 +39,14 @@ Clone the repository:
 git clone https://github.com/RafaelPil/GoCookies
 ```
 
-- Create Telegram ChatBot(BotFather).
+- Create Telegram [ChatBot(BotFather)].
 
 Get The Telegram ChatID:
 ```bash
 https://api.telegram.org/bot<YourBotToken>/getUpdates
 ```
 
-3. Set "botToken" and chatID in ./main.go file:
+3. Set [botToken] and [chatID] in [./main.go] file:
 
 ```bash
 botToken = ""
