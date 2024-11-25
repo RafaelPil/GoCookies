@@ -64,7 +64,7 @@ Contributions to this project are welcome! Feel free to open issues, submit pull
 
 If you find the project useful, consider supporting its development by leaving a star ⭐. Your encouragement helps!
 
-<a href='https://miro.medium.com/v2/resize:fit:1200/1*HdRAxEVwO_27UL1e6QhUeA.png' width=800></a>
+<a href='https://miro.medium.com/v2/resize:fit:1200/1*EPdXV6DAFtthI3w-d0XUcg.jpeg' width=150></a>
 
 ## Disclaimer
 
