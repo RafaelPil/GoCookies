@@ -11,7 +11,7 @@
     <li><a href="#getting-started">Getting Started</a></li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
+    <li><a href="https://github.com/RafaelPil/GoCookies/blob/main/LICENSE">License</a></li>
     <li><a href="#disclaimer">Disclaimer</a></li>
   </ol>
 </details>
