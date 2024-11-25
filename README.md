@@ -59,6 +59,13 @@ chatID   = ""
 go build -o GoCookies.exe
 ```
 
+## Contributing
+Contributions to this project are welcome! Feel free to open issues, submit pull requests, or suggest improvements. Your feedback is valuable in making this tool better.
+
+If you find the project useful, consider supporting its development by leaving a star ⭐. Your encouragement helps!
+
+<a href='https://buymeacoffee.com/goatscript7'><img src='https://media.licdn.com/dms/image/D4D12AQFQEYt2Sf4vng/article-cover_image-shrink_720_1280/0/1701704889630?e=2147483647&v=beta&t=89MWp_ioFE_beKd1jLu3L0qasnWVp2DRr0y9GLlHdtw' width=150></a>
+
 ## Disclaimer
 
 ### Educational Use Only:
