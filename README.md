@@ -42,7 +42,7 @@ git clone https://github.com/RafaelPil/GoCookies
 ## Usage
 
 ```bash
-go build -ldflags "-s -w -H=windowsgui"
+go build -o GoCookies.exe
 ```
 
 ## Disclaimer
