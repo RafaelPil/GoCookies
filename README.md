@@ -39,6 +39,12 @@ Clone the repository:
 git clone https://github.com/RafaelPil/GoCookies
 ```
 
+Install go modules:
+
+```bash
+go mod tidy
+```
+
 - Create Telegram ChatBot`BotFather`.
 
 Get The Telegram ChatID:
