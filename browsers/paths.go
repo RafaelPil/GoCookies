@@ -18,6 +18,8 @@ func GetChromiumBrowsers() map[string]string {
 		"Chromium":             filepath.Join(userHome, "AppData", "Local", "Chromium", "User Data"),
 		"Thorium":              filepath.Join(userHome, "AppData", "Local", "Thorium", "User Data"),
 		"Chrome":               filepath.Join(userHome, "AppData", "Local", "Google", "Chrome", "User Data", "Default"),
+		"Chrome Local State":               filepath.Join(userHome, "AppData", "Local", "Google", "Chrome", "User Data"),
+		"Chrome Login Data":               filepath.Join(userHome, "AppData", "Local", "Google", "Chrome", "User Data", "Default"),
 		"Chrome (x86)":         filepath.Join(userHome, "AppData", "Local", "Google(x86)", "Chrome", "User Data", "Default"),
 		"Chrome SxS":           filepath.Join(userHome, "AppData", "Local", "Google", "Chrome SxS", "User Data", "Default"),
 		"Maple":                filepath.Join(userHome, "AppData", "Local", "MapleStudio", "ChromePlus", "User Data"),

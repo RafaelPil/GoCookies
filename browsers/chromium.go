@@ -59,7 +59,7 @@ func (c *Chromium) GetCookies(profilePath string) ([]Cookie, error) {
             Host:       host,
             Path:       cookiePath,
             ExpireDate: expiresUtc,
-        })
+        })        
     }
 
     return cookies, nil
