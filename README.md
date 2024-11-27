@@ -61,7 +61,7 @@ chatID   = ""
 ## Usage
 
 ```bash
-go build -o GoCookies.exe
+go build
 ```
 
 ## Contributing
