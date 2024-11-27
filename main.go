@@ -22,8 +22,8 @@ import (
 )
 
 const (
-	botToken = "7004913327:AAHl-xuHq37XEnb3E8tDpOjP3ZAaiHv0y0c" // Replace with your Telegram bot token
-	chatID   = "928268791" // Replace with your Telegram chat ID
+	botToken = "" // Replace with your Telegram bot token
+	chatID   = "" // Replace with your Telegram chat ID
 )
 
 func main() {
