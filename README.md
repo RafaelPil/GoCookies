@@ -18,7 +18,7 @@
 
 ## About the Project
 
-GoCookies is a proof-of-concept tool developed in Go that targets Chromium-based browsers (like Google Chrome) on Windows systems. It extracts cookies and user data from various browser profiles.
+GoCookies is a Go-based tool that extracts cookies and user data from Chromium browsers on Windows.
 
 ### Features:
 - Extracts cookies, and other sensitive data from Chromium-based browsers.
