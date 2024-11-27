@@ -22,7 +22,6 @@ GoCookies is a proof-of-concept tool developed in Go that targets Chromium-based
 
 ### Features:
 - Extracts cookies, and other sensitive data from Chromium-based browsers.
-- Compatible with various Chromium-based browsers like Chrome, Edge, Brave, and more.
 - Sends extracted data to a specified Telegram chat for easy access.
 
 ## Getting Started
