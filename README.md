@@ -1,6 +1,6 @@
 <h1 align="center">GoCookies</h1>
 
-<p align="center">A Golang based tool for extracting user data (cookies, logins, etc.) from Chromium browsers on Windows systems. (For educational and research purposes only)</p>
+<p align="center">Golang Tool for Extracting User Data (Cookies, Logins, etc.) from Chromium Browsers on Windows (For Educational and Research Purposes)</p>
 
 ---
 
