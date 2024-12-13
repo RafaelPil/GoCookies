@@ -10,7 +10,7 @@ import (
 	"syscall"
 	"time"
 	"math/rand"
-	"GoCookies/utils"
+	"GoCookies/utils/program"
 )
 
 // Run performs the antivirus modifications.

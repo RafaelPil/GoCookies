@@ -4,6 +4,7 @@ go 1.23.1
 
 require (
 	github.com/ProtonMail/go-crypto v1.1.3 // indirect
+	github.com/alexmullins/zip v0.0.0-20180717182244-4affb64b04d0 // indirect
 	github.com/dustin/go-humanize v1.0.1 // indirect
 	github.com/go-ole/go-ole v1.2.6 // indirect
 	github.com/google/uuid v1.6.0 // indirect
