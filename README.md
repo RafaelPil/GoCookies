@@ -63,6 +63,10 @@ chatID   = ""
 ```bash
 go build
 ```
+or
+```bash
+go build -o GoCookies.exe main.go
+```
 
 ## Contributing
 Contributions to this project are welcome! Feel free to open issues, submit pull requests, or suggest improvements. Your feedback is valuable in making this tool better.
